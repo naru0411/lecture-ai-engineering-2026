@@ -1,0 +1,94 @@
+{
+  "summary": {
+    "label": "after",
+    "n": 10,
+    "known_n": 7,
+    "unknown_n": 3,
+    "known_answer_rate": 0.2857142857142857,
+    "unknown_abstention_rate": 0.0,
+    "content_rate": 0.2,
+    "seconds": 24.7
+  },
+  "rows": [
+    {
+      "question": "AIエンジニアリングを学ぶと、実務では何をする領域？",
+      "term": "AIエンジニアリング",
+      "raw": "LLMをツールとして使う、モデルを自分で選んで調整する、データで評価する、など。本講座では第2回でツールで動くAIを扱う。",
+      "known_term": true,
+      "abstained": false,
+      "content_ok": false
+    },
+    {
+      "question": "LLM（大規模言語モデル）は、文章をどう作るモデルですか？",
+      "term": "LLM（大規模言語モデル）",
+      "raw": "入力と出力の2段階で考える。入力を見て、ルールや教えるデータから出力を予測する。",
+      "known_term": true,
+      "abstained": false,
+      "content_ok": false
+    },
+    {
+      "question": "トークンって何を数える単位？",
+      "term": "トークン",
+      "raw": "LLMがテキストを扱う最小単位。単語、文字、桁などより小さい。同じ意味を持つ文字や数字を区別するために使う。",
+      "known_term": true,
+      "abstained": false,
+      "content_ok": false
+    },
+    {
+      "question": "プロンプトには質問以外に何を含められますか？",
+      "term": "プロンプト",
+      "raw": "LLMがモデルとして扱われる入力文の一部分。指示の形式、役割、制約、出力の期待値、ツールを使う場合の引数、出力のフォーマットなど。",
+      "known_term": true,
+      "abstained": false,
+      "content_ok": true
+    },
+    {
+      "question": "ファインチューニングはどんな目的に向いた追加学習？",
+      "term": "ファインチューニング",
+      "raw": "事前学習済みモデルを、特定のタスクや形式に合ったデータで追加学習させること。事前学習したモデルは知識が広く分散しているため、少量のデータで質の高い結果をすぐに得られる。",
+      "known_term": true,
+      "abstained": false,
+      "content_ok": true
+    },
+    {
+      "question": "LoRAでは、学習時にどんな重みを更新するの？",
+      "term": "LoRA",
+      "raw": "低ランク行列の2つの列（低ランクベクトル）を、重みで表し、その2つの列を同じ方向にずらすことで、学習するべき重みを決定する。",
+      "known_term": true,
+      "abstained": false,
+      "content_ok": false
+    },
+    {
+      "question": "PEFTで学習すると何を節約できますか？",
+      "term": "PEFT",
+      "raw": "重みを減らすこと。重みを減らすほど学習するデータや計算量が減る。",
+      "known_term": true,
+      "abstained": false,
+      "content_ok": false
+    },
+    {
+      "question": "次回講義の開始時刻を教えてください。",
+      "term": null,
+      "raw": "2026年10月27日（土）14:00（JST）",
+      "known_term": false,
+      "abstained": false,
+      "content_ok": false
+    },
+    {
+      "question": "担当教員の氏名と連絡先メールアドレスは？",
+      "term": null,
+      "raw": "担当する授業の週に1人ずつ選び、自分の名前とメールアドレスを記入し、授業開始時の確認書（担当番号＋名前＋メールアドレス）を貼る。確認書に書かないと授業に参加不能になる。",
+      "known_term": false,
+      "abstained": false,
+      "content_ok": false
+    },
+    {
+      "question": "この講座の修了証はいつ発行されますか？",
+      "term": null,
+      "raw": "講座の合否（修了・未修了）は、提出した演習・宿題の結果を審査員が数値で評価し、提出したレポート・演習録・宿題録を自己で確認して提出する中で提出すること。提出した時点で修了証をもらう。",
+      "known_term": false,
+      "abstained": false,
+      "content_ok": false
+    }
+  ]
+}
