@@ -138,6 +138,32 @@ def search(query: str) -> list[dict]:
         return [dict(row) for row in rows]
 
 
+def _search_graph_seeds(query: str) -> list[dict]:
+    """複数の問いを含む質問では、問いごとの検索結果もGraphの入口にする。"""
+    facets = [part.strip() for part in re.split(r"(?<=[。！？!?])", query) if part.strip()]
+    limit = min(GRAPH_START_K, GRAPH_MAX_RESULTS)
+    if len(facets) > 1:
+        queries = [query.strip(), *facets[:limit]]
+    else:
+        terms = [term for term in query.split() if len(term) > 1]
+        queries = terms[:limit] if len(terms) >= limit else [query.strip(), *terms]
+    ranked_results = [search(part) for part in dict.fromkeys(queries)]
+
+    seeds, seen = [], set()
+    for rank in range(max((len(results) for results in ranked_results), default=0)):
+        for results in ranked_results:
+            if rank >= len(results):
+                continue
+            hit = results[rank]
+            if hit["page_id"] in seen:
+                continue
+            seeds.append(hit)
+            seen.add(hit["page_id"])
+            if len(seeds) >= limit:
+                return seeds
+    return seeds
+
+
 def search_graph(query: str) -> dict:
     """ベクトル検索を入口に、前後ページと共通用語で候補を広げる。"""
     pages = {page["page_id"]: page for page in load_pages(RAG_SOURCE)}
@@ -151,7 +177,7 @@ def search_graph(query: str) -> dict:
             adjacent[a].add(b)
             adjacent[b].add(a)
 
-    seeds = [hit for hit in search(query) if hit["page_id"] in pages][:min(GRAPH_START_K, GRAPH_MAX_RESULTS)]
+    seeds = [hit for hit in _search_graph_seeds(query) if hit["page_id"] in pages]
     seed_ids = {seed["page_id"] for seed in seeds}
     results, candidates = [], {}
     for rank, seed in enumerate(seeds):
